@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        {% for product in products %}
+
+            <div class="card text-light bg-info mb-3 col-5 text-center mx-auto">
+                <div class="card-header"><h5>{{ product.name }}</h5></div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <span class="text-primary">Description:</span>
+                        {% if product.description %}
+                            {{ product.description }}
+
+                            {% else %}
+                            No description(
+                        {% endif %}
+                    </p>
+                    <hr>
+                    <p class="card-text"><span class="text-primary">Category:</span> {{ product.get_category_display }}</p>
+                </div>
+                <div class="card-footer bg-transparent btn-group" role="group">
+                    <a href="" class="btn btn-info text-danger font-weight-bold">Delete</a>
+                    <a href="{% url 'detail' product.pk %}" class="btn btn-info text-primary font-weight-bold">View</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
