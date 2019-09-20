@@ -16,16 +16,55 @@
                         {% if product.description %}
                             {{ product.description }}
 
-                            {% else %}
+                        {% else %}
                             No description(
                         {% endif %}
                     </p>
                     <hr>
-                    <p class="card-text"><span class="text-primary">Category:</span> {{ product.get_category_display }}</p>
+                    <p class="card-text"><span class="text-primary">Category:</span> {{ product.get_category_display }}
+                    </p>
                 </div>
                 <div class="card-footer bg-transparent btn-group" role="group">
-                    <a href="" class="btn btn-info text-danger font-weight-bold">Delete</a>
+                    <a href="" class="btn btn-info text-danger font-weight-bold" data-toggle="modal"
+                       data-target="#modal{{ product.pk }}">Delete</a>
+                    <a href="{% url 'update' product.pk %}"
+                       class="btn btn-info text-primary font-weight-bold">Update</a>
                     <a href="{% url 'detail' product.pk %}" class="btn btn-info text-primary font-weight-bold">View</a>
+                </div>
+            </div>
+
+            {#            <!-- Button trigger modal -->#}
+            {#            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">#}
+            {#                Запустить модальное окно#}
+            {#            </button>#}
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal{{ product.pk }}" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete product?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">Name: {{ product.name }}</li>
+                                <li class="list-group-item">Category: {{ product.get_category_display }}</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+
+                            <form action="/delete/{{ product.pk }}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         {% endfor %}

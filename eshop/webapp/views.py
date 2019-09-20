@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Product
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Product, category_choices
+from .forms import ProductForm
 
 
 def index(request):
@@ -10,3 +11,56 @@ def index(request):
 def detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'detail.html', {'product': product})
+
+
+def create(request):
+    if request.method == 'GET':
+        form = ProductForm()
+        return render(request, 'create.html', {'statuses': category_choices, 'form': form})
+
+    elif request.method == 'POST':
+        form = ProductForm(data=request.POST)
+        if form.is_valid():
+            Product.objects.create(
+                name=form.cleaned_data['name'],
+                description=form.cleaned_data['description'],
+                category=form.cleaned_data['category'],
+                count=form.cleaned_data['count'],
+                price=form.cleaned_data['price']
+            )
+            return redirect('index')
+        else:
+            return render(request, 'create.html', context={'form': form})
+
+
+def update(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+
+    if request.method == 'GET':
+        form = ProductForm(data={
+            'name': product.name,
+            'description': product.description,
+            'category': product.category,
+            'count': product.count,
+            'price': product.price
+        })
+        return render(request, 'update.html', context={'form': form, 'product': product})
+
+    if request.method == 'POST':
+        form = ProductForm(data=request.POST)
+        if form.is_valid():
+            product.name = form.cleaned_data['name']
+            product.description = form.cleaned_data['description']
+            product.category = form.cleaned_data['category']
+            product.count = form.cleaned_data['count']
+            product.price = form.cleaned_data['price']
+            product.save()
+            return redirect('index')
+        else:
+            return render(request, 'update.html', context={'form': form, 'task': product})
+
+
+def delete(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    product.delete()
+    return redirect('index')
