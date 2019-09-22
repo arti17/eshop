@@ -5,6 +5,16 @@
 {% endblock %}
 
 {% block body %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <span class="mr-3 font-weight-bold">Filter:</span>
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">All</a></li>
+            {% for category in categories %}
+                <li class="breadcrumb-item"><a href="{% url 'category' category %}">{{ category|capfirst }}</a></li>
+            {% endfor %}
+        </ol>
+    </nav>
+
     <div class="row">
         <table class="table table-bordered text-center">
             <thead class="thead-light">
@@ -18,7 +28,7 @@
             <tbody>
             {% for product in products %}
                 <tr>
-                    <th class="align-middle">{{ product.name }}</th>
+                    <th class="align-middle"><a href="{% url 'detail' product.pk %}" class="text-dark">{{ product.name }}</a></th>
                     <td class="align-middle">{{ product.get_category_display }}</td>
                     <td class="align-middle">{{ product.price }}</td>
                     <td>

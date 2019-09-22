@@ -3,9 +3,20 @@ from .models import Product, category_choices
 from .forms import ProductForm
 
 
+def get_categories():
+    products = Product.objects.exclude(count=0)
+    categories = []
+    for product in products:
+        category = str(product).split('-')
+        if category[1].strip() not in categories:
+            categories.append(category[1].strip())
+    return categories
+
+
 def index(request):
     products = Product.objects.order_by('category', 'name').exclude(count=0)
-    return render(request, 'index.html', {'products': products})
+    categories = get_categories()
+    return render(request, 'index.html', {'products': products, 'categories': categories})
 
 
 def detail(request, pk):
@@ -64,3 +75,9 @@ def delete(request, pk):
     product = get_object_or_404(Product, pk=pk)
     product.delete()
     return redirect('index')
+
+
+def filter_by_category(request, category):
+    products = Product.objects.filter(category=category).exclude(count=0).order_by('name')
+    categories = get_categories()
+    return render(request, 'index.html', {'products': products, 'categories': categories})
