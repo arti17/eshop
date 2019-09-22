@@ -69,7 +69,7 @@ def update(request, pk):
             product.save()
             return redirect('index')
         else:
-            return render(request, 'update.html', context={'form': form, 'task': product})
+            return render(request, 'update.html', context={'form': form})
 
 
 def delete(request, pk):
@@ -89,7 +89,7 @@ def search(request):
     form = SearchForm(data=request.GET)
     if form.is_valid():
         name = form.cleaned_data['name']
-        products = Product.objects.filter(name__contains=name)
+        products = Product.objects.filter(name__contains=name).exclude(count=0)
         return render(request, 'index.html', {'products': products, 'categories': categories, 'form': form})
     else:
         return redirect('index')
