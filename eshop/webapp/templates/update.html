@@ -3,8 +3,8 @@
 {% block title %}Update product{% endblock %}
 
 {% block body %}
-    <h1 class="center">Update product</h1>
-    <form class="col s12" action="/update/{{ product.pk }}" method="POST">
+    <h1 class="text-center mb-3">Update product</h1>
+    <form action="/update/{{ product.pk }}" method="POST">
 
         {% include 'partial/product_form.html' with btn_text='Update' %}
 

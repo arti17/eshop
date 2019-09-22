@@ -10,8 +10,8 @@
             <thead class="thead-light">
             <tr>
                 <th scope="col">Product</th>
-                <th scope="col">Description</th>
                 <th scope="col">Category</th>
+                <th scope="col">Price</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -19,8 +19,8 @@
             {% for product in products %}
                 <tr>
                     <th class="align-middle">{{ product.name }}</th>
-                    <td class="align-middle">{{ product.description }}</td>
                     <td class="align-middle">{{ product.get_category_display }}</td>
+                    <td class="align-middle">{{ product.price }}</td>
                     <td>
                         <a href="" class="text-danger font-weight-bold mb-1" data-toggle="modal"
                            data-target="#modal{{ product.pk }}">
