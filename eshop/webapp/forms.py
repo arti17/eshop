@@ -9,3 +9,7 @@ class ProductForm(forms.Form):
     category = forms.ChoiceField(required=True, choices=category_choices, label='Category')
     count = forms.IntegerField(required=True, min_value=0, label='Count')
     price = forms.DecimalField(required=True, max_digits=7, decimal_places=2, label='Price')
+
+
+class SearchForm(forms.Form):
+    name = forms.CharField(max_length=100, required=True, label='Name')

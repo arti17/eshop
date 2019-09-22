@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, category_choices
-from .forms import ProductForm
+from .forms import ProductForm, SearchForm
 
 
 def get_categories():
@@ -14,9 +14,10 @@ def get_categories():
 
 
 def index(request):
+    form = SearchForm()
     products = Product.objects.order_by('category', 'name').exclude(count=0)
     categories = get_categories()
-    return render(request, 'index.html', {'products': products, 'categories': categories})
+    return render(request, 'index.html', {'products': products, 'categories': categories, 'form': form})
 
 
 def detail(request, pk):
@@ -81,3 +82,14 @@ def filter_by_category(request, category):
     products = Product.objects.filter(category=category).exclude(count=0).order_by('name')
     categories = get_categories()
     return render(request, 'filtered_page_by_category.html', {'products': products, 'categories': categories, 'category': category})
+
+
+def search(request):
+    categories = get_categories()
+    form = SearchForm(data=request.GET)
+    if form.is_valid():
+        name = form.cleaned_data['name']
+        products = Product.objects.filter(name__contains=name)
+        return render(request, 'index.html', {'products': products, 'categories': categories, 'form': form})
+    else:
+        return redirect('index')

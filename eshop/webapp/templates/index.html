@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block title %}
     Eshop
 {% endblock %}
 
 {% block body %}
+    <form action="/search/">
+        <form class="form-inline">
+            {% for field in form %}
+                <div class="form-group mb-2 d-inline-block">
+                    <label for="name" class="sr-only">{{ field.label }}</label>
+                    {{ field|add_class:'form-control'|append_attr:'placeholder:Enter name' }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary mb-1">Search</button>
+        </form>
+    </form>
+
     {% include 'partial/view_products_page.html' %}
 {% endblock %}
