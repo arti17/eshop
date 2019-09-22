@@ -1,15 +1,25 @@
 from django.db import models
 
-
-category_choices = [('other', 'Other'), ('notebooks', 'Notebooks'), ('computers', 'Computers'), ('monitors', 'Monitors'), ('printers', 'Printers')]
+other_choice = 'other'
+category_choices = [
+    (other_choice, 'Other'),
+    ('notebooks', 'Notebooks'),
+    ('computers', 'Computers'),
+    ('monitors', 'Monitors'),
+    ('printers', 'Printers')
+]
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Название')
-    description = models.TextField(max_length=2000, null=True, verbose_name='Описание')
-    category = models.CharField(max_length=30, null=False, choices=category_choices, default='other', verbose_name='Категория')
-    count = models.IntegerField(verbose_name='Остаток')
-    price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='Цена')
+    name = models.CharField(max_length=100, verbose_name='Name')
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Description')
+    category = models.CharField(max_length=30, choices=category_choices, default=other_choice, verbose_name='Category')
+    count = models.IntegerField(default=0, verbose_name='Balance')
+    price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='Price')
 
     def __str__(self):
         return f'{self.name} - {self.category} - {self.price}'
+
+    class Meta:
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
