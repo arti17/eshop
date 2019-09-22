@@ -1,0 +1,152 @@
+[
+{
+  "model": "webapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "ASUS 21.5",
+    "description": "ASUS 21.5\" VS228DE LED 5ms/50000000:1/90/65/1920x1080 FullHD VGA",
+    "category": "monitors",
+    "count": 4,
+    "price": "6169.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 4,
+  "fields": {
+    "name": "\u041c\u043e\u043d\u043e\u0431\u043b\u043e\u043a AIO 24",
+    "description": "Blok AIO 24\"/ i7-2760/ DDR3 8GB/ SSD 120GB/ integrated card/ EXW",
+    "category": "computers",
+    "count": 0,
+    "price": "43851.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 7,
+  "fields": {
+    "name": "Lenovo Ideapad",
+    "description": "Lenovo Ideapad V320-17IKB Mineral Grey Intel Core i7-8550U (4/8, up to 4.0Ghz), 20GB DDR4, 1TB HDD + 1TB SSD, Nvidia Geforce MX150 2GB, 17.3\" IPS LED FULL HD (1920x1080), WiFi, BT, HD WebCam, Eng-Rus",
+    "category": "notebooks",
+    "count": 5,
+    "price": "82168.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 10,
+  "fields": {
+    "name": "BookReader",
+    "description": "BookReader Amazon Kindle Paperwhite-2018,BLACK, 1072\u00d71448, 6\"E-Ink,8Gb,Wi-Fi",
+    "category": "other",
+    "count": 10,
+    "price": "10646.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 11,
+  "fields": {
+    "name": "Notebook MSI",
+    "description": "Notebook MSI GF63 Thin 8SC-030US 9S7-16R312-030 Intel Core i5-8300H (2.30-4.00GHz), 8GB DDR4, 256GB SSD, NVIDIA GTX 1650 4GB GDDR5, 15.6\"FHD (1920x1080) IPS, WiFi ac, BT 5.0, HD WC, Win 10 Home, Black",
+    "category": "notebooks",
+    "count": 3,
+    "price": "72263.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 12,
+  "fields": {
+    "name": "SAMSUNG 21.5",
+    "description": "SAMSUNG 21.5\" LED LCD S22D300NY TN+film LED 5ms 16:9 Mat 600:1 200cd VGA",
+    "category": "monitors",
+    "count": 2,
+    "price": "6980.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 14,
+  "fields": {
+    "name": "Apple iMac",
+    "description": "Apple iMac with Retina (Mid 2017) MNDY2LL/A Intel Core i5-7400 (3.00-3.50GHz), 8GB DDR4, 1TB HDD, AMD Radeon Pro 555 2GB GDDR5, 21.5\"4K (4096x2304) IPS, WiFi ac, BT 4.2, CR, HD WC, macOS High Sierra, Silver",
+    "category": "computers",
+    "count": 1,
+    "price": "95122.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 15,
+  "fields": {
+    "name": "Asus Nexus",
+    "description": "Asus Nexus 7C 32GB LTE (1A015A) (7\" IPS (1920x1200), S4 Pro 8064 Quad-Core (1.5Ghz), 2GB, 32GB Storage, BT, Wi-Fi, Front Camera 1.2MP, Rear Ca",
+    "category": "other",
+    "count": 0,
+    "price": "31306.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 18,
+  "fields": {
+    "name": "HP LaserJet",
+    "description": "HP LaserJet Pro M102a Printer A4,23ppm,White",
+    "category": "printers",
+    "count": 5,
+    "price": "6451.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 19,
+  "fields": {
+    "name": "Canon LBP 2900",
+    "description": "Canon LASER SHOT LBP-2900 Black (A4, 600 x 600, 14 ppm, 2MB, USB port)+cable USB",
+    "category": "printers",
+    "count": 2,
+    "price": "13254.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 20,
+  "fields": {
+    "name": "Monoblock Lenovo IdeaCentre",
+    "description": "Monoblock Lenovo IdeaCentre AIO 520-24ARR F0DN001PUS AMD Ryzen 3 2200GE (3.20-3.60GHz), 8GB DDR4, 1TB HDD, DVD\u00b1RW, AMD Radeon Vega, 23.8\"FHD (1920x1080) Touch LED, WiFi, BT 4.0, WC, Win Home, Black",
+    "category": "computers",
+    "count": 1,
+    "price": "51113.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 21,
+  "fields": {
+    "name": "HP Probook 450",
+    "description": "HP Probook 450 G6 Intel Core i5-8265U (4\u044f\u0434\u0440\u0430/8\u043f\u043e\u0442\u043e\u043a\u043e\u0432, up to 3.9Ghz), 32GB DDR4, 240GB SSD, Nvidia Geforce MX130 2GB, 15.6\" LED HD, WiFi, BT, HD WebCam, UltraSlim, BAG, Eng-Rus",
+    "category": "notebooks",
+    "count": 2,
+    "price": "66975.00"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$uNQXTDqChqbF$vq0mymfRwG+CtRUl/o9QzA26I17mpvK58d1+BrCzrII=",
+    "last_login": "2019-09-22T07:10:52.809Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-09-19T14:26:44.298Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
