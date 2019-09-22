@@ -1,0 +1,72 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <span class="mr-3 font-weight-bold">Filter:</span>
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">All</a></li>
+        {% for category in categories %}
+            <li class="breadcrumb-item"><a href="{% url 'category' category %}">{{ category|capfirst }}</a></li>
+        {% endfor %}
+    </ol>
+</nav>
+
+<div class="row">
+    <table class="table table-bordered text-center">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <th class="align-middle"><a href="{% url 'detail' product.pk %}"
+                                            class="text-dark">{{ product.name }}</a></th>
+                <td class="align-middle"><a href="{% url 'category' product.category %}"
+                                            class="text-dark">{{ product.get_category_display }}</a></td>
+                <td class="align-middle">{{ product.price }}</td>
+                <td>
+                    <a href="" class="text-danger font-weight-bold mb-1" data-toggle="modal"
+                       data-target="#modal{{ product.pk }}">
+                        <i class="material-icons">delete_forever</i>
+                    </a>
+                    <a href="{% url 'update' product.pk %}" class="text-primary font-weight-bold mb-1">
+                        <i class="material-icons">update</i>
+                    </a>
+                    <a href="{% url 'detail' product.pk %}" class="text-success font-weight-bold">
+                        <i class="material-icons">open_with</i>
+                    </a>
+                </td>
+            </tr>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal{{ product.pk }}" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete product?</h5>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">Name: <b>{{ product.name }}</b></li>
+                                <li class="list-group-item">Category: <b>{{ product.get_category_display }}</b></li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+
+                            <form action="/delete/{{ product.pk }}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

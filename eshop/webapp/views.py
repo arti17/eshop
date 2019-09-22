@@ -80,4 +80,4 @@ def delete(request, pk):
 def filter_by_category(request, category):
     products = Product.objects.filter(category=category).exclude(count=0).order_by('name')
     categories = get_categories()
-    return render(request, 'index.html', {'products': products, 'categories': categories})
+    return render(request, 'filtered_page_by_category.html', {'products': products, 'categories': categories, 'category': category})
